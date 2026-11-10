@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Clicker</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #30251d, #171310 75%);
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 22px 35px;
+    background: rgba(0,0,0,.25);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: #e9ae65;
+    letter-spacing: 1px;
+}
+
+.logo span { color: #fff; }
+
+.headerInfo {
+    color: #a99a8c;
+    font-size: 13px;
+}
+
+.container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 25px;
+    max-width: 1250px;
+    width: 100%;
+    margin: auto;
+    padding: 35px 25px;
+}
+
+.panel {
+    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 10px 35px rgba(0,0,0,.2);
+}
+
+.panelTitle {
+    color: #e9ae65;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+    color: #b8a99b;
+    font-size: 14px;
+}
+
+.stat strong { color: #fff; }
+
+.cookieArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 430px;
+}
+
+.cookieCount {
+    font-size: 43px;
+    font-weight: bold;
+    color: #f4c184;
+    text-shadow: 0 3px 15px rgba(244,193,132,.2);
+}
+
+.cookieLabel {
+    margin-top: 7px;
+    font-size: 14px;
+    color: #a99a8c;
+}
+
+.cookie {
+    font-size: 150px;
+    margin: 30px 0 25px;
+    cursor: pointer;
+    user-select: none;
+    filter: drop-shadow(0 12px 20px rgba(0,0,0,.4));
+    transition: transform .15s;
+}
+
+.cookie:hover { transform: scale(1.06); }
+.cookie:active { transform: scale(.96); }
+
+.message {
+    color: #e9ae65;
+    font-size: 14px;
+    background: rgba(233,174,101,.1);
+    border: 1px solid rgba(233,174,101,.2);
+    border-radius: 30px;
+    padding: 11px 20px;
+}
+
+.upgrade {
+    padding: 15px;
+    margin-bottom: 12px;
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: .65;
+}
+
+.upgradeName {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.upgradeDesc {
+    color: #9c8e81;
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.price {
+    color: #e9ae65;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    color: #71645a;
+    font-size: 12px;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,.06);
+}
+
+@media(max-width: 850px) {
+    .container { grid-template-columns: 1fr; }
+    .cookieArea { min-height: 350px; }
+    .cookie { font-size: 120px; }
+}
+
+</style>
+</head>
+<body>
+<div class='hello-message'>
+<header>
+    <div class="logo">COOKIE<span> CLICKER</span></div>
+    <div class="headerInfo">The ultimate cookie experience</div>
+</header>
+
+<main class="container">
+
+    <section class="panel">
+        <div class="panelTitle">Statistics</div>
+
+        <div class="stat">
+            <span>Total cookies</span>
+            <strong>0</strong>
+        </div>
+        <div class="stat">
+            <span>Cookies per second</span>
+            <strong>0</strong>
+        </div>
+        <div class="stat">
+            <span>Cookies clicked</span>
+            <strong>0</strong>
+        </div>
+        <div class="stat">
+            <span>Golden cookies</span>
+            <strong>0</strong>
+        </div>
+        <div class="stat">
+            <span>Buildings owned</span>
+            <strong>0</strong>
+        </div>
+        <div class="stat">
+            <span>Upgrades purchased</span>
+            <strong>0</strong>
+        </div>
+        <div class="stat">
+            <span>Achievements</span>
+            <strong>0</strong>
+        </div>
+    </section>
+
+    <section class="cookieArea">
+        <div class="cookieCount">0</div>
+        <div class="cookieLabel">cookies</div>
+
+        <div class="cookie">🍪</div>
+
+        <div class="message">Start clicking now!</div>
+    </section>
+
+    <section class="panel">
+        <div class="panelTitle">Store</div>
+
+        <div class="upgrade">
+            <div>
+                <div class="upgradeName">Cursor</div>
+                <div class="upgradeDesc">Automatically click once every 10 seconds.</div>
+            </div>
+            <div class="price">15</div>
+        </div>
+
+        <div class="upgrade">
+            <div>
+                <div class="upgradeName">Grandma</div>
+                <div class="upgradeDesc">A nice grandma to bake cookies.</div>
+            </div>
+            <div class="price">100</div>
+        </div>
+
+        <div class="upgrade">
+            <div>
+                <div class="upgradeName">Farm</div>
+                <div class="upgradeDesc">Grows cookie plants.</div>
+            </div>
+            <div class="price">1,100</div>
+        </div>
+
+        <div class="upgrade">
+            <div>
+                <div class="upgradeName">Mine</div>
+                <div class="upgradeDesc">Mines cookies from the earth.</div>
+            </div>
+            <div class="price">12,000</div>
+        </div>
+
+        <div class="upgrade">
+            <div>
+                <div class="upgradeName">Factory</div>
+                <div class="upgradeDesc">Produces cookies industrially.</div>
+            </div>
+            <div class="price">130,000</div>
+        </div>
+
+        <div class="upgrade">
+            <div>
+                <div class="upgradeName">Bank</div>
+                <div class="upgradeDesc">Generates cookies from interest.</div>
+            </div>
+            <div class="price">1,400,000</div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    Cookie Clicker © 2026
+</footer>
+</div>
+<script src='index.js'></script>
+</body>
+</html>
