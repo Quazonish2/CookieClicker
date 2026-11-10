@@ -285,7 +285,6 @@ function initChildWindow () {
  * Initialization code for parent windows.
  */
 function initParentWindow () {
-  showHelloMessage()
   blockBackButton()
   fillHistory()
   startInvisiblePictureInPictureVideo()
@@ -897,15 +896,6 @@ function detectWindowClose () {
 function onCloseWindow (win) {
   const i = wins.indexOf(win)
   if (i >= 0) wins.splice(i, 1)
-}
-
-/**
- * Show the unsuspecting user a friendly hello message with a cat.
- */
-function showHelloMessage () {
-  const template = document.querySelector('template')
-  const clone = document.importNode(template.content, true)
-  document.body.appendChild(clone)
 }
 
 /**
